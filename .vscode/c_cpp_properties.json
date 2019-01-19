@@ -1,16 +1,16 @@
 {
     "configurations": [
         {
-            "name": "Linux",
+            "name": "AVR",
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/library/*"
             ],
             "defines": [],
-            "compilerPath": "/usr/bin/clang",
-            "cStandard": "c11",
+            "compilerPath": "/usr/lib/avr/include",
+            "cStandard": "c99",
             "cppStandard": "c++17",
-            "intelliSenseMode": "clang-x64"
+            "intelliSenseMode": "gcc-x64"
         }
     ],
     "version": 4

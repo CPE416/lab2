@@ -1,6 +1,14 @@
 #ifndef HARDWARE_H
 #define HARDWARE_H
 
+
+// Pin map
+#define LIGHT_SENSOR_1_PIN 0
+#define LIGHT_SENSOR_2_PIN 1
+#define MOTOR_1 0
+#define MOTOR_2 1
+
+
 void init_led(u08 num){
 	digital_dir(num, 1);
 }
@@ -13,27 +21,19 @@ void led_low(u08 num){
 	digital_out(num, 0);
 }
 
+void read_light_sensor(int *vals){
+    // vals[0] = analog(LIGHT_SENSOR_1_PIN);
+    // vals[1] = analog(LIGHT_SENSOR_2_PIN);
 
-void process_data(u08 *data, u08 *vals){
+    vals[0] = vals[0] + 1;
+    vals[1] = vals[1] + 1;
+}
 
+void process_data(u08 *data, int *vals){
+	// Takes values from -100 to 100 and maps to 97 to 
 
-    // switch (MODE){
-    //     case MODE_2A:
-    //         break;
-    //     case MODE_2B:
-    //         break;
-    //     case MODE_3A:
-    //         break;
-    //     case MODE_3B:
-    //         break;
-    // }
-    
-    // data[0] = map_motor_value(vals[0]);
-    // data[1] = map_motor_value(vals[1]);
-
-
-    data[0] = vals[0];
-    data[1] = vals[1];
+    data[0] = (vals[0] * 0.3333) + 127;
+    data[1] = (vals[1] * 0.3333) + 127;
 }
 
 void set_motors(u08 *data){
