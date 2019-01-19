@@ -1,3 +1,5 @@
 *.elf
 dev.txt
 *.hex
+main.elf
+main.hex
