@@ -2,9 +2,6 @@
 // Lab 2 Part 1
 // Description: 
 
-#include "globals.h"
-#include <avr/io.h>
-#include <avr/interrupt.h>
 
 // Custum delay lib
 #include "delay.h"
@@ -53,7 +50,7 @@ int main(void)
 }
 
 
-void  print_data(u08 *vals, u08 *data){
+void  print_data(int *vals, u08 *data){
     clear_screen();
     lcd_cursor(0, 0);
     print_num(vals[0]);

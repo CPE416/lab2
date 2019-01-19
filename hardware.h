@@ -2,6 +2,10 @@
 #define HARDWARE_H
 
 
+#include "globals.h"
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
 // Pin map
 #define LIGHT_SENSOR_1_PIN 0
 #define LIGHT_SENSOR_2_PIN 1
@@ -33,7 +37,7 @@ void process_data(u08 *data, int *vals){
 	// Takes values from -100 to 100 and maps to 97 to 
 
     data[0] = (vals[0] * 0.3333) + 127;
-    data[1] = (vals[1] * 0.3333) + 127;
+    data[1] = 127 - (vals[1] * 0.3333);
 }
 
 void set_motors(u08 *data){

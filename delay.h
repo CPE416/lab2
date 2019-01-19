@@ -3,6 +3,8 @@
 
 #include <util/delay.h>
 
+#include "globals.h"
+
 #define ONE 1
 #define DELAY_1K 1000
 #define CLOCK_RATE 10000

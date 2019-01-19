@@ -7,7 +7,7 @@
                 "${workspaceFolder}/library/*"
             ],
             "defines": [],
-            "compilerPath": "/usr/lib/avr/include",
+            "compilerPath": "/usr/lib/avr",
             "cStandard": "c99",
             "cppStandard": "c++17",
             "intelliSenseMode": "gcc-x64"
