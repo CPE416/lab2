@@ -29,6 +29,7 @@ void read_data(u08 *vals);
 void process_data(u08 *data, u08 *vals);
 u08 map_motor_value(int val);
 void set_motors(u08 *data);
+void print_data(u08 *vals, u08 *data);
 
 int main(void)
 {
@@ -45,6 +46,7 @@ int main(void)
     {
         read_data(vals);
         process_data(data, vals);
+    print_data(vals, data);
         set_motors(data);
         delay_ms(DELAY_MS);
     }
@@ -81,12 +83,19 @@ void process_data(u08 *data, u08 *vals){
 }
 
 void set_motors(u08 *data){
-    print_data(data);
     set_servo(MOTOR_1, data[0]);
     set_servo(MOTOR_2, data[1]);
 }
 
-void  print_data(u08 *data){
+void  print_data(u08 *vals, u08 *data){
     clear_screen();
-    set_cur
+    lcd_cursor(0, 0);
+    print_num(vals[0]);
+    lcd_cursor(4, 0);
+    print_num(data[0]);
+    lcd_cursor(0, 1);
+    print_num(vals[1]);
+    lcd_cursor(4, 1);
+    print_num(data[1]);
+    
 }
