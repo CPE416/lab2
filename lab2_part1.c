@@ -25,7 +25,6 @@
 #define MODE_3A 2
 #define MODE_3B 3
 
-void init_motors();
 void read_data(u08 *vals);
 void process_data(u08 *data, u08 *vals);
 u08 map_motor_value(int val);
@@ -34,6 +33,8 @@ void set_motors(u08 *data);
 int main(void)
 {
     init(); // Init board
+    init_servo();
+
     u08 vals[] = {0, 0}; // Data retrieve from lgith sensors
     u08 data[] = {0, 0}; 
     // Place text at start of buffer
@@ -44,35 +45,48 @@ int main(void)
     {
         read_data(vals);
         process_data(data, vals);
-        set_motors(buffer, data);
+        set_motors(data);
         delay_ms(DELAY_MS);
     }
     return 1;
 }
 
 void read_data(u08 *vals){
-    vals[0] = analog(LIGHT_SENSOR_1_PIN);
-    vals[1] = analog(LIGHT_SENSOR_2_PIN);
+    // vals[0] = analog(LIGHT_SENSOR_1_PIN);
+    // vals[1] = analog(LIGHT_SENSOR_2_PIN);
+
+    vals[0] = 255;
+    vals[1] = 0;
 }
 
-void process_data(u08 *data, u08 vals){
+void process_data(u08 *data, u08 *vals){
 
-    switch (MODE){
-        case MODE_2A:
-            break;
-        case MODE_2B:
-            break;
-        case MODE_3A:
-            break;
-        case MODE_3B:
-            break;
-    }
+    // switch (MODE){
+    //     case MODE_2A:
+    //         break;
+    //     case MODE_2B:
+    //         break;
+    //     case MODE_3A:
+    //         break;
+    //     case MODE_3B:
+    //         break;
+    // }
     
-    data[0] = map_motor_value(vals[0]);
-    data[1] = map_motor_value(vals[1]);
+    // data[0] = map_motor_value(vals[0]);
+    // data[1] = map_motor_value(vals[1]);
+
+
+    data[0] = vals[0];
+    data[1] = vals[1];
 }
 
 void set_motors(u08 *data){
+    print_data(data);
     set_servo(MOTOR_1, data[0]);
     set_servo(MOTOR_2, data[1]);
+}
+
+void  print_data(u08 *data){
+    clear_screen();
+    set_cur
 }
