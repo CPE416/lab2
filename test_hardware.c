@@ -23,6 +23,7 @@ int main(void)
 		clear_screen();
 		poll_photodiode(PHOTO_DIODE_RIGHT);
 		poll_photodiode(PHOTO_DIODE_LEFT);
+		lcd_cursor(0, 1);
 		poll_linesensor(LINE_SENSOR_RIGHT);
 		poll_linesensor(LINE_SENSOR_LEFT);
 		delay_ms(500);
@@ -38,7 +39,7 @@ void poll_linesensor(u08 pin_num){
 }
 
 void print_data(u08 count, u08 vals){
-	print_num(count);
+	//print_num(count);
 	print_string(":");
 	print_num(vals);
 }
