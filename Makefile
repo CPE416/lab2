@@ -73,6 +73,10 @@ part4: lab2_part4.c $(wildcard $(BOARD_LIB)/*.c)
 	avr-gcc -I$(BOARD_LIB) -DF_CPU=$(CLOCK_RATE) -Wall -mmcu=atmega645a -O2 -o main.elf lab2_part4.c $(wildcard $(BOARD_LIB)/*.c)
 	make prep
 
+test_hardware: test_hardware.c $(wildcard $(BOARD_LIB)/*.c)
+	avr-gcc -I$(BOARD_LIB) -DF_CPU=$(CLOCK_RATE) -Wall -mmcu=atmega645a -O2 -o main.elf test_hardware.c $(wildcard $(BOARD_LIB)/*.c)
+	make prep
+
 prep:
 	avr-objcopy -O ihex main.elf main.hex
 	avr-size main.elf
