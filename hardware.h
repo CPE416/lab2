@@ -53,7 +53,7 @@ void motor(u08 num, u08 speed){
     set_servo(0, (speed * 0.3333 ) + 127);
 }
 
-void  print_data(char* a, char* b, char* c, char* d){
+void print_4(char* a, char* b, char* c, char* d){
     clear_screen();
     lcd_cursor(0, 0);
     print_string(a);
@@ -64,6 +64,18 @@ void  print_data(char* a, char* b, char* c, char* d){
     lcd_cursor(4, 1);
     print_string(d);
     
+}
+void print_2(char* a, char* b){
+    clear_screen();
+    lcd_cursor(0, 0);
+    print_string(a);
+    lcd_cursor(0, 1);
+    print_string(b); 
+}
+void print_1(char* a){
+    clear_screen();
+    lcd_cursor(0, 0);
+    print_string(a);
 }
 
 #endif
