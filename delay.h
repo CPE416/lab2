@@ -7,11 +7,13 @@
 
 #define ONE 1
 #define DELAY_1K 1000
-#define CLOCK_RATE 10000
 
 void delay_s(u16 s)
 {
-    _delay_ms(DELAY_1K);
+    while (s-- > 0)
+    {
+        _delay_ms(DELAY_1K);
+    }
 }
 void delay_ms(u16 ms)
 {

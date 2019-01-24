@@ -33,16 +33,37 @@ void read_light_sensor(int *vals){
     vals[1] = vals[1] + 1;
 }
 
-void process_data(u08 *data, int *vals){
-	// Takes values from -100 to 100 and maps to 97 to 
+// void process_data(u08 *data, int *vals){
+// 	// Takes values from -100 to 100 and maps to 97 to 
 
-    data[0] = (vals[0] * 0.3333) + 127;
-    data[1] = 127 - (vals[1] * 0.3333);
+//     data[0] = (vals[0] * 0.3333) + 127;
+//     data[1] = 127 - (vals[1] * 0.3333);
+// }
+
+// void set_motors(u08 *data){
+//     set_servo(MOTOR_1, data[0]);
+//     set_servo(MOTOR_2, data[1]);
+// }
+
+void motor(u08 num, u08 speed){
+    if (num == 1){
+
+        set_servo(1, ((0 - speed) * 0.3333 ) + 127);
+    }
+    set_servo(0, (speed * 0.3333 ) + 127);
 }
 
-void set_motors(u08 *data){
-    set_servo(MOTOR_1, data[0]);
-    set_servo(MOTOR_2, data[1]);
+void  print_data(char* a, char* b, char* c, char* d){
+    clear_screen();
+    lcd_cursor(0, 0);
+    print_string(a);
+    lcd_cursor(4, 0);
+    print_string(b);
+    lcd_cursor(0, 1);
+    print_string(c);
+    lcd_cursor(4, 1);
+    print_string(d);
+    
 }
 
 #endif

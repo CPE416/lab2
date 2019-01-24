@@ -1,5 +1,7 @@
-*.elf
-dev.txt
+
 *.hex
 main.elf
-main.hex
+*.hex
+*.elf
+dev.txt
+*.txt
