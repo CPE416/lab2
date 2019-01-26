@@ -23,7 +23,7 @@
 #define PHOTO_DIODE_LEFT_MAX 255
 #define LINE_SENSOR_RIGHT_MIN 0
 #define LINE_SENSOR_RIGHT_MAX 255
-#define LINE_SENSOR_LEFT_MIN 150
+#define LINE_SENSOR_LEFT_MIN 0
 #define LINE_SENSOR_LEFT_MAX 255
 
 void init_led(u08 num){
@@ -64,6 +64,10 @@ void motor(u08 num, u08 speed){
         set_servo(1, ((0 - speed) * 0.3333 ) + 127);
     }
     set_servo(0, (speed * 0.3333 ) + 127);
+}
+
+u08 poll_analog_pin(u08 pin_num){
+    return analog(pin_num);
 }
 
 void print_4(char* a, char* b, char* c, char* d){
