@@ -6,7 +6,8 @@
 	],
 	"settings": {
 		"files.associations": {
-			"delay.h": "c"
+			"delay.h": "c",
+			"globals.h": "c"
 		}
 	}
 }

@@ -17,7 +17,7 @@ int main(void)
     init();
     motor(0, 0);
     motor(1, 0);
-    
+
     int speed = 0;
     int delta = DELTA_INIT;
     char* buf = "aaaabbbb";
