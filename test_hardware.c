@@ -7,6 +7,7 @@
 
 // Custum delay lib
 #include "delay.h"
+#include "hardware.h"
 
 #define PHOTO_DIODE_RIGHT 0
 #define PHOTO_DIODE_LEFT 1
@@ -15,10 +16,14 @@
 
 void poll_linesensor(u08 pin_num);
 void poll_photodiode(u08 pin_num);
+void print_data(u08 count, u08 vals);
 
 int main(void)
 {
 	init();
+    motor(0, 0);
+    motor(1, 0);
+
 	while(1){
 		clear_screen();
 		lcd_cursor(0, 0);
