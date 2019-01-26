@@ -11,6 +11,19 @@
 #define MOTOR_LEFT 0
 #define MOTOR_RIGHT 1
 
+#define PHOTO_DIODE_RIGHT 0
+#define PHOTO_DIODE_LEFT 1
+#define LINE_SENSOR_RIGHT 3
+#define LINE_SENSOR_LEFT 2
+
+#define PHOTO_DIODE_RIGHT_MIN 0
+#define PHOTO_DIODE_RIGHT_MAX 255
+#define PHOTO_DIODE_LEFT_MIN 0
+#define PHOTO_DIODE_LEFT_MAX 255
+#define LINE_SENSOR_RIGHT_MIN 0
+#define LINE_SENSOR_RIGHT_MAX 255
+#define LINE_SENSOR_LEFT_MIN 150
+#define LINE_SENSOR_LEFT_MAX 255
 
 void init_led(u08 num){
 	digital_dir(num, 1);
