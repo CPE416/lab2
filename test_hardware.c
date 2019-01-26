@@ -21,6 +21,7 @@ int main(void)
 	init();
 	while(1){
 		clear_screen();
+		lcd_cursor(0, 0);
 		poll_photodiode(PHOTO_DIODE_RIGHT);
 		poll_photodiode(PHOTO_DIODE_LEFT);
 		lcd_cursor(0, 1);
