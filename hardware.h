@@ -25,6 +25,7 @@
 #define LINE_SENSOR_LEFT_MIN 0
 #define LINE_SENSOR_LEFT_MAX 255
 
+// Functions for external LEDs on digital pins
 void init_led(u08 num){
 	digital_dir(num, 1);
 }
@@ -38,8 +39,8 @@ void led_low(u08 num){
 }
 
 void read_light_sensor(u08 *vals){
-    vals[MOTOR_LEFT] = analog(LIGHT_SENSOR_PIN_LEFT);
-    vals[MOTOR_RIGHT] = analog(LIGHT_SENSOR_PIN_RIGHT);
+    vals[0] = analog(LIGHT_SENSOR_PIN_LEFT);
+    vals[1] = analog(LIGHT_SENSOR_PIN_RIGHT);
 
     // vals[0] = vals[0] + 1;
     // vals[1] = vals[1] + 1;
@@ -53,9 +54,9 @@ void motor(u08 num, u08 speed){
     set_servo(MOTOR_LEFT, (0 - speed * 0.3333 ) + 127);
 }
 
-void set_motors(u08 *data){
-    motor(MOTOR_LEFT, data[0]);
-    motor(MOTOR_RIGHT, data[1]);
+void set_motors(u08 left, u08 right){
+    motor(MOTOR_LEFT, left);
+    motor(MOTOR_RIGHT, right);
 }
 
 

@@ -13,7 +13,7 @@
 #define MODE_2A 1 
 #define MODE_2B 0
 
-#define LIGHT_MIN 200
+#define DEAD_ZONE 200
 
 void process_data_mode_a(u08* vals, u08* data);
 void process_data_mode_b(u08* vals, u08* data);
@@ -23,8 +23,8 @@ u08 set_mode(u08 mode);
 int main(void)
 {
     init(); // Init board
-    motor(0, 0);
-    motor(1, 0);
+    motor(MOTOR_LEFT, 0);
+    motor(MOTOR_RIGHT, 0);
 
     u08 mode = set_mode(MODE_2A);
     u08 vals[] = {0, 0}; // Data retrieve from lgith sensors
@@ -48,7 +48,7 @@ int main(void)
 
         print_4(vals[0], data[0], vals[1], data[1]);
         
-        set_motors(data);
+        set_motors(data[0], data[1]);
 
         delay_ms(DELAY_MS);
 
@@ -68,10 +68,10 @@ void process_data_mode_b(u08* vals, u08* data){
 }
 
 u08 map_light_to_motor(u08 val){
-    if (val < LIGHT_MIN){
+    if (val < DEAD_ZONE){
         val = 0;
     }else{
-        val = val - LIGHT_MIN;
+        val = val - DEAD_ZONE;
     } 
     u08 data = (val);
     if (data > 100){
