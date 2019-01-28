@@ -27,8 +27,8 @@ int main(void)
     motor(MOTOR_RIGHT, 0);
 
     u08 mode = set_mode(MODE_2A);
-    u08 vals[] = {0, 0}; // Data retrieve from lgith sensors
-    u08 data[] = {0, 0}; 
+    u08 vals[2] = {0, 0}; // Data retrieve from lgith sensors
+    u08 data[2] = {0, 0}; 
     // Place text at start of buffer
     // sprintf(buffer, "416");
 
