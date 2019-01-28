@@ -10,7 +10,7 @@
 #define THRESHOLD 120
 void pid_control(pid _pid);
 void insert_error(pid _pid, int _error);
-
+void print_pid(struct pid _pid);
 
 int main(void)
 {
@@ -19,6 +19,7 @@ int main(void)
 	struct pid _pid = {_error, 2, 0, 0};
 	while(1){
 		pid_control(_pid);
+		print_pid(_pid);
 		delay_ms(100);
 	}
 }
@@ -54,4 +55,7 @@ struct pid
    u08 d_term;
 };
 
+void print_pid(struct pid _pid){
+	print_4(_pid.error[0], _pid.p_term, _pid.i_term, _pid.d_term);
+}
 
