@@ -5,3 +5,9 @@ main.elf
 *.elf
 dev.txt
 *.txt
+avrdude.exe
+avrdude.conf
+main.elf
+main.hex
+main.elf
+main.hex
