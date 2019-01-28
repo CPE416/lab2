@@ -8,11 +8,13 @@
 // Pin map
 #define LIGHT_SENSOR_PIN_RIGHT 0
 #define LIGHT_SENSOR_PIN_LEFT 1
+
 #define MOTOR_LEFT 0
 #define MOTOR_RIGHT 1
 
 #define PHOTO_DIODE_RIGHT 0
 #define PHOTO_DIODE_LEFT 1
+
 #define LINE_SENSOR_RIGHT 3
 #define LINE_SENSOR_LEFT 2
 
