@@ -37,7 +37,7 @@ int main(void)
 
 	int _error[5] = {0,0,0,0,0};
 	struct pid _pid = {_error, P_TERM, I_TERM, D_TERM};
-	while((get_btn() == 0) | (get_btn2() == 0)){
+	while((get_btn() == 0) && (get_btn2() == 0)){
 		delay_ms(1);
 	}
 
