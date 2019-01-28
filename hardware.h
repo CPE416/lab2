@@ -43,15 +43,15 @@ void read_light_sensor(u08 *vals){
     vals[1] = analog(LIGHT_SENSOR_PIN_RIGHT);
 
     // vals[0] = vals[0] + 1;
-    // vals[1] = vals[1] + 1;
+    // vals[1] = vals[1] - 1;
 }
 
 void motor(u08 num, u08 speed){
     if (num == MOTOR_RIGHT){
-
-        set_servo(MOTOR_RIGHT, ((speed) * 0.3333 ) + 127);
+        set_servo(MOTOR_RIGHT, ((0 - speed) * 0.3333 ) + 127);
+    }else{
+        set_servo(MOTOR_LEFT, (speed * 0.3333 ) + 127);
     }
-    set_servo(MOTOR_LEFT, (0 - speed * 0.3333 ) + 127);
 }
 
 void set_motors(u08 left, u08 right){

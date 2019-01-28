@@ -1,5 +1,5 @@
 // Name:  Jared Peter-Contesse & Spencer Shaw
-// Lab 2 Part 2
+// Lab 2 Part 3
 // Description: 
 
 
@@ -10,8 +10,8 @@
 // Settings
 #define DELAY_MS 200 // Delay time for loop
 
-#define MODE_2A 1 
-#define MODE_2B 0
+#define MODE_3A 1 
+#define MODE_3B 0
 
 #define DEAD_ZONE 200
 
@@ -26,7 +26,7 @@ int main(void)
     motor(MOTOR_LEFT, 0);
     motor(MOTOR_RIGHT, 0);
 
-    u08 mode = set_mode(MODE_2A);
+    u08 mode = set_mode(MODE_3A);
     u08 vals[] = {0, 0}; // Data retrieve from light sensors
     u08 data[] = {0, 0}; 
     // Place text at start of buffer
@@ -38,10 +38,10 @@ int main(void)
         read_light_sensor(vals);
 
         switch (mode){
-            case MODE_2A:
+            case MODE_3A:
                 process_data_mode_a(vals, data);
                 break;
-            case MODE_2B:  
+            case MODE_3B:  
                 process_data_mode_b(vals, data);
                 break;
         }
@@ -75,7 +75,7 @@ u08 map_light_to_motor(u08 val){
     }else{
         val = val - DEAD_ZONE;
     } 
-    u08 data = (val);
+    u08 data = (35 - val);
     if (data > 100){
         data = 0;
     }
@@ -85,17 +85,17 @@ u08 map_light_to_motor(u08 val){
 u08 set_mode(u08 mode){
     u08 pressed = get_btn();
     if(pressed){
-        if (mode == MODE_2A)
-            mode = MODE_2B;
+        if (mode == MODE_3A)
+            mode = MODE_3B;
         else 
-            mode = MODE_2A;
+            mode = MODE_3A;
     }
     switch (mode ){
-        case MODE_2A:
+        case MODE_3A:
             led_off(1);
             led_on(0);
             break;
-        case MODE_2B:
+        case MODE_3B:
             led_off(0);
             led_on(1);
             break;
