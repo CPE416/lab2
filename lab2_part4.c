@@ -35,8 +35,7 @@ void pid_control(pid _pid){
 		actual -= 1;
 	}
 	insert_error(_pid, actual);
-	output = _pid.
-
+	output = _pid.error[0] * _pid.pterm;
 }
 
 void insert_error(pid _pid, int _error){
