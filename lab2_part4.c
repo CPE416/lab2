@@ -7,12 +7,12 @@
 // Custum delay lib
 #include "delay.h"
 
-#define THRESHOLD 180
+#define THRESHOLD 200
 #define BASE_MOTOR_SPEED 20
-#define P_TERM 20
+#define P_TERM 15
 #define I_TERM 0
 #define D_TERM 10
-#define ERROR_CHECK_DELAY 100
+#define ERROR_CHECK_DELAY 50
 
 typedef struct pid 
 { 
@@ -37,7 +37,7 @@ int main(void)
 
 	int _error[5] = {0,0,0,0,0};
 	struct pid _pid = {_error, P_TERM, I_TERM, D_TERM};
-	while((get_btn() == 0) | (get_btn2() == 0)){
+	while((get_btn() == 0) && (get_btn2() == 0)){
 		delay_ms(1);
 	}
 
@@ -63,6 +63,10 @@ void pid_control(pid *_pid){
 	}
 	if(left > THRESHOLD){
 		actual -= 1;
+	}
+
+	if(actual == 0){
+		actual = _pid->error[0];
 	}
 	insert_error(_pid, actual);
 
