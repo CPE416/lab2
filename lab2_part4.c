@@ -22,13 +22,15 @@ typedef struct pid
    u08 d_term;
 }pid;
 
-
 int main(void)
 {
 	init();
+    set_motors(0, 0);
+	digital_dir(BTN2_PIN, 0);
+
 	u08 _error[5] = {0,0,0,0,0};
 	struct pid _pid = {_error, 2, 0, 0};
-	while(get_btn()){
+	while(get_btn() | get_btn2()){
 		delay_ms(1);
 	}
 	while(1){
