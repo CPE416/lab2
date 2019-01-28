@@ -20,14 +20,12 @@ int main(void)
 
     int speed = 0;
     int delta = DELTA_INIT;
-    char* buf = "aaaabbbb";
     while (1)   
     {
         motor(0, speed);
         motor(1, speed);
 
-        sprintf(buf, "%d", speed);
-        print_1(buf);
+        print_1(speed);
         delay_ms(DELAY_MS);
         speed = speed + delta;
         if ((speed > 96) || (speed < -96)){

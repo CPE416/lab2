@@ -89,6 +89,11 @@ void insert_error(pid *_pid, int _error){
 	_pid->error[0] = _error;
 }
 
+// Prints some values from a PID struct to the LCD
+void print_pid(struct pid _pid){
+	print_4(_pid.error[0], _pid.p_term, _pid.i_term, _pid.d_term);
+}
+
 //Calculates the derivative term based off past error values
 int calc_derivative(pid *_pid){
 	int derivative = 0;
