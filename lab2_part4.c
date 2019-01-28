@@ -22,6 +22,7 @@ typedef struct pid
    u08 d_term;
 }pid;
 
+
 void pid_control(pid *_pid);
 void insert_error(pid *_pid, int _error);
 int calc_derivative(pid *_pid);
@@ -36,7 +37,7 @@ int main(void)
 
 	int _error[5] = {0,0,0,0,0};
 	struct pid _pid = {_error, P_TERM, I_TERM, D_TERM};
-	while(get_btn() == 0){
+	while((get_btn() == 0) | (get_btn2() == 0)){
 		delay_ms(1);
 	}
 

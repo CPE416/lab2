@@ -18,6 +18,8 @@
 #define LINE_SENSOR_RIGHT 3
 #define LINE_SENSOR_LEFT 2
 
+#define BTN2_PIN DIGITAL9_PIN
+
 #define PHOTO_DIODE_RIGHT_MIN 0
 #define PHOTO_DIODE_RIGHT_MAX 255
 #define PHOTO_DIODE_LEFT_MIN 0
@@ -64,6 +66,10 @@ void set_motors(u08 left, u08 right){
 
 u08 poll_analog_pin(u08 pin_num){
     return analog(pin_num);
+}
+
+u08 get_btn2(){
+    return digital(BTN2_PIN);
 }
 
 void print_4(u08 a, u08 b, u08 c, u08 d){
