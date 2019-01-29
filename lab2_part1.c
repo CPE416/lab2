@@ -9,21 +9,19 @@
 #include "hardware.h"
 
 // Settings
-#define DELAY_MS 200 // Delay time for loop
+#define DELAY_MS 100 // Delay time for loop
 #define DELTA_INIT 4 // Braitenberg mode
 
 int main(void)
 {
     init();
-    motor(0, 0);
-    motor(1, 0);
+    set_motors(0, 0);
 
     int speed = 0;
     int delta = DELTA_INIT;
     while (1)   
     {
-        motor(0, speed);
-        motor(1, speed);
+        set_motors(speed, speed);
 
         print_1(speed);
         delay_ms(DELAY_MS);
