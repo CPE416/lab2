@@ -69,7 +69,7 @@ u08 poll_analog_pin(u08 pin_num){
 }
 
 u08 get_btn2(){
-    return digital(BTN2_PIN);
+    return !digital(BTN2_PIN);
 }
 
 void print_4(u08 a, u08 b, u08 c, u08 d){

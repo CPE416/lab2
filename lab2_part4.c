@@ -1,18 +1,17 @@
 #include <stdio.h>
 
-// Custum delay lib
+// Our libs
 #include "delay.h"
 #include "hardware.h"
 
-// Custum delay lib
-#include "delay.h"
 
 #define THRESHOLD 200
-#define BASE_MOTOR_SPEED 20
-#define P_TERM 15
+#define BASE_MOTOR_SPEED 25
+#define P_TERM 10
 #define I_TERM 0
-#define D_TERM 10
+#define D_TERM 14
 #define ERROR_CHECK_DELAY 50
+#define HISTORY_LENGTH 8
 
 typedef struct pid 
 { 
@@ -21,7 +20,6 @@ typedef struct pid
    u08 i_term;
    u08 d_term;
 }pid;
-
 
 void pid_control(pid *_pid);
 void insert_error(pid *_pid, int _error);
@@ -33,9 +31,11 @@ int main(void)
 	set_motors(0, 0);
 
 	clear_screen();
-	print_string("Press B1");
+	print_string("Press a");
+	lcd_cursor(0, 1);
+	print_string("button");
 
-	int _error[5] = {0,0,0,0,0};
+	int _error[HISTORY_LENGTH] = {0};
 	struct pid _pid = {_error, P_TERM, I_TERM, D_TERM};
 	while((get_btn() == 0) && (get_btn2() == 0)){
 		delay_ms(1);
@@ -86,8 +86,8 @@ void pid_control(pid *_pid){
 
 //Inserts most recent term and removes last term
 void insert_error(pid *_pid, int _error){
-	u08 i = 3;
-	while(i < 4){
+	u08 i = HISTORY_LENGTH - 2;
+	while(i < HISTORY_LENGTH - 1){
 		_pid->error[i] = _pid->error[i+1];
 		i--;
 	}
@@ -102,12 +102,12 @@ void print_pid(struct pid _pid){
 //Calculates the derivative term based off past error values
 int calc_derivative(pid *_pid){
 	int derivative = 0;
-	u08 i = 4;
-	while(i < 4){
+	u08 i = HISTORY_LENGTH - 1;
+	while(i < HISTORY_LENGTH - 1){
 		derivative += _pid->error[i];
 		i--;
 	}
-	derivative = derivative/5;
+	derivative = derivative / HISTORY_LENGTH;
 	return derivative;
 }
 
