@@ -4,17 +4,15 @@
 #include "delay.h"
 #include "hardware.h"
 
-
 #define THRESHOLD 200
 #define BASE_MOTOR_SPEED 25
 #define P_TERM 10
 #define I_TERM 0
 #define D_TERM 14
-#define ERROR_CHECK_DELAY 50
+#define ERROR_CHECK_DELAY 10
 #define HISTORY_LENGTH 8
 
-typedef struct pid 
-{ 
+typedef struct pid{ 
    int *error;
    u08 p_term;
    u08 i_term;

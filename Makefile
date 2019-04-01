@@ -20,7 +20,7 @@ SOURCE_LIB = $(wildcard $(BOARD_LIB)/*.c)
 CLOCK_RATE = 16000000L
 
 MAC_DEVICE = /dev/tty.usbmodem14201
-LINUX_DEVICE = /dev/ttyACM1
+LINUX_DEVICE = /dev/ttyACM0
 UNAME := $(shell uname -s)
 LINUX = Linux
 
